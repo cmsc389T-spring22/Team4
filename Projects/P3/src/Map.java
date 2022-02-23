@@ -2,6 +2,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
 
+
+/**
+ * NOTES:
+ * 	not sure what dim does but the
+ * 	actual height of the map is 24
+ * 	actual width of the map is 25
+ */
 public class Map{
 
 	public enum Type {
@@ -60,7 +67,7 @@ public class Map{
 	
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		return null;
+		return this.field.get(loc);
 	}
 
 	public boolean attack(String Name) {
