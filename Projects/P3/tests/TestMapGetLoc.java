@@ -8,6 +8,12 @@ public class TestMapGetLoc extends TestCase {
 	private int scale = 20;
 	private String fileName = "src/assets/Map.txt";
 
+	/**
+	 * This function returns the same map as instantiated in MainFrame
+	 * which reads the Map.txt file to create walls and cookies
+	 * @return Map
+	 * @throws FileNotFoundException
+	 */
 	private Map createMapFromAssetTxt() throws FileNotFoundException {
 		Map myMap = new Map(30);
 		File text = new File(fileName);
@@ -35,7 +41,10 @@ public class TestMapGetLoc extends TestCase {
 		return myMap;
 	}
 
-
+	/**
+	 * Tests that get works on the initial map for all valid locations
+	 * @throws FileNotFoundException
+	 */
 	public void testMapGetLoc() throws FileNotFoundException  {
 		Map myMap = createMapFromAssetTxt();
 		for (int row = 0; row < 24; row++) {
@@ -51,6 +60,14 @@ public class TestMapGetLoc extends TestCase {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Tests that multiple but only a set of objects can be added to valid location
+	 * @throws FileNotFoundException
+	 */
+	public void testGetLocAddObjects() throws FileNotFoundException {
+		Map myMap = createMapFromAssetTxt();
 		addGhost(myMap, new Location(3, 4), "ghost1", new Color(0, 0, 0));
 		addGhost(myMap, new Location(3, 4), "ghost2", new Color(1, 1, 1));
 		addGhost(myMap, new Location(3, 4), "ghost2", new Color(2, 2, 2));
@@ -61,8 +78,14 @@ public class TestMapGetLoc extends TestCase {
 		PacManComponent pc = new PacManComponent(3,4 ,scale);
 		myMap.add("pacman", new Location(3, 4), pc, Map.Type.PACMAN);
 		assertEquals(3,loc.size());
-
 	}
+
+	public void testGetLocOutOfBounds() throws FileNotFoundException {
+		Map myMap = createMapFromAssetTxt();
+		HashSet<Map.Type> loc = myMap.getLoc(new Location(-1, -1));
+		assertNull(loc);
+	}
+
 	public void addGhost(Map myMap, Location loc, String name, Color color) {
 		GhostComponent comp = new GhostComponent(loc.x, loc.y, color, scale);
 		myMap.add(name, loc, comp, Map.Type.GHOST);
