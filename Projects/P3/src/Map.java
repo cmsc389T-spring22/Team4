@@ -2,6 +2,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
 
+
+/**
+ * NOTES:
+ * 	not sure what dim does but the
+ * 	actual height of the map is 24
+ * 	actual width of the map is 25
+ */
 public class Map{
 
 	public enum Type {
@@ -57,10 +64,21 @@ public class Map{
 		//use the setLocation method for the component to move it to the new location
 		return false;
 	}
-	
+
+	/**
+	 * If a location is on the map is will be in field.
+	 * If a location is outside of the map is should return null;
+	 * This way we can differentiate between Empty valid Location
+	 * and outside of map.
+	 * @param loc
+	 * @return
+	 */
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		return null;
+		if (!field.containsKey(loc)) {
+			return null;
+		}
+		return this.field.get(loc);
 	}
 
 	public boolean attack(String Name) {
