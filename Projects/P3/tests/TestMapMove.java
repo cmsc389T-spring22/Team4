@@ -10,7 +10,7 @@ public class TestMapMove {
 		Mainframe frame = new MainFrame(); //Creates A New Map With Walls and Tokens Initialized
 
 		//Creating Players
-		PacMan pacman = frame.addPacMan(new Location(5, 5), "Pacman", Color.red); //Creates PacMan at location x, y
+		PacMan pacman = frame.addPacMan(new Location(5, 5)); //Creates PacMan at location x, y
 
 		//Start The Game
 		frame.startGame();
@@ -18,7 +18,7 @@ public class TestMapMove {
 		ArrayList<Location> locs = pacman.get_valid_moves();
 
 		if (locs.size() != 0) {
-			assertTrue(frame.move(pacman.name, locs.get(0), Type.PACMAN));
+			assertTrue(frame.move(pacman.name, locs.get(0), Map.Type.PACMAN));
 		}
 	
 	}
