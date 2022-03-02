@@ -14,16 +14,17 @@ public class TestGhostMove extends TestCase {
 		//Start The Game
 		frame.startGame();
 		ArrayList<Location> moves = ghost.get_valid_moves();
-
+	
 		if (moves.size() != 0) {
 			ghost.move();
-		assertTrue(moves.contains(ghost.myLoc));
+			assertTrue(moves.contains(ghost.myLoc));
 		}
-
+		
 		moves = ghost.get_valid_moves();
 		if (moves.size() != 0) {
 			ghost.move();
-		assertTrue(moves.contains(ghost.myLoc));
+			assertTrue(moves.contains(ghost.myLoc));
 		}
+
 	}
 }
