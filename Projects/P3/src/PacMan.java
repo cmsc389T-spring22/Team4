@@ -22,8 +22,13 @@ public class PacMan{
 		return false;
 	}
 
+	// Uses Map class's getLoc to see whether the object located at 
+	// Locations directly next to pacman's location is of type GHOST
 	public boolean is_ghost_in_range() { 
-		return false;
+		return myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST) ||
+		myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST) ||
+		myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST) || 
+		myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST);
 	}
 
 	public JComponent consume() { 
