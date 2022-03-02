@@ -9,7 +9,7 @@ public class TestPacManMove extends TestCase {
 		Mainframe frame = new MainFrame(); //Creates A New Map With Walls and Tokens Initialized
 
 		//Creating Players
-		PacMan pacman = frame.addPacMan(new Location(x, y), "Pacman", Color.red); //Creates PacMan at location x, y
+		PacMan pacman = frame.addPacMan(new Location(5, 5)); //Creates PacMan at location x, y
 
 		//Start The Game
 		frame.startGame();
