@@ -64,8 +64,16 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
-		return false;
+		// update gameOver
+		// only called when ghost succesfully atacks so it should always 
+		// return true I think
+
+		if (!locations.containsKey(Name)){
+			return false;
+		}
+		
+		gameOver = true;
+		return true;
 	}
 	
 	public JComponent eatCookie(String name) {
