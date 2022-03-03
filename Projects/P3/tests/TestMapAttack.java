@@ -4,7 +4,7 @@ import junit.framework.*;
 public class TestMapAttack {
 
 	public void testMapAttack() {
-		Mainframe frame = new MainFrame(); //Creates A New Map With Walls and Tokens Initialized
+		MainFrame frame = new MainFrame(); //Creates A New Map With Walls and Tokens Initialized
 
 		//Creating Players
 		Ghost ghost = frame.addGhost(new Location(2, 3), "name", Color.red); //Creates a red ghost named "name" at location x,y
