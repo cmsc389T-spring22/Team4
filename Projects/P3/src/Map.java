@@ -67,6 +67,7 @@ public class Map{
 		// update gameOver
 		// only called when ghost succesfully atacks so it should always 
 		// return true I think
+		
 		if (!locations.containsKey(Name)){
 			return false;
 		}
