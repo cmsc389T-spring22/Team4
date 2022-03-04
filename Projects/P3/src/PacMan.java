@@ -37,7 +37,12 @@ public class PacMan{
 	}
 
 	public boolean move() {
-		return false;
+		if (get_valid_moves().size() == 0) {
+			return false;
+		} else {
+			this.myLoc = get_valid_moves().get(0);
+			return true;
+		}
 	}
 
 	// Uses Map class's getLoc to see whether the object located at 
