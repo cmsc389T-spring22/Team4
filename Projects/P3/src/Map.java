@@ -65,15 +65,17 @@ public class Map{
 
 	public boolean attack(String Name) {
 		// update gameOver
-		// only called when ghost succesfully atacks so it should always 
-		// return true I think
-		
-		if (!locations.containsKey(Name)){
-			return false;
+		// checks if pacman is adjacent to the ghost		
+		Location loc_ghost = locations.get(Name);
+		Location loc_pacman = locations.get("pacman");
+		Location unshifted = loc_ghost.unshift(loc_pacman);
+
+		if (Math.pow(unshifted.x, 2) + Math.pow(unshifted.y, 2) == 1 && (unshifted.x == 0 || unshifted.y == 0)){
+			gameOver = true;
+			return true;
 		}
-		
-		gameOver = true;
-		return true;
+
+		return false;
 	}
 	
 	public JComponent eatCookie(String name) {
