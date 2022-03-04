@@ -9,7 +9,7 @@ public class TestAttack extends TestCase {
 
 		//Creating Players
 		Ghost ghost = frame.addGhost(new Location(5, 5), "Ghost", Color.white);
-		frame.addPacMan(new Location(5, 5));
+		frame.addPacMan(new Location(4, 5));
 
 		//Start The Game
 		frame.startGame();
