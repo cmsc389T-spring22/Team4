@@ -9,10 +9,14 @@
 #### **move()**
 This method uses get_valid_moves() to find the possible locations that a Pacman can move to from its current location. It then moves it to the first possible location returned by get_valid_moves(). If the pacman can move, the method returns true, otherwise, it returns false. For the test, I created a Pacman object, then called get_valid_moves(), and moved the pacman using move() to the first valid move if there were any valid moves. I tested that the move correctly moved the pacman to one of the valid moves. I did this a second time to test that another move would also return the correct result.
 #### **is_ghost_in_range()**
+The method checks if there is a ghost in range by checking whether the hash set at the indicated locations adjacent to Pacman contain the type "GHOST".
+The test is simple; we place Pacman at (0, 0) and a ghost at (1, 0). The test should return true, as the ghost is one above Pacman.
 #### **consume()**
 
 ## Ghost Class
 #### **get_valid_moves()**
+The method checks if the adjacent Locations contain the type "WALL". The ones that don't are added to the ArrayList of Locations.
+In the test, a ghost is surrounded by three ghosts and Pacman. In this case, because ghosts can move through anything that isn't a wall, the output should contain all four Locations of the other objects.
 #### **move()**
 This method uses get_valid_moves() to find the possible locations that a Ghost can move to from its current location. It then moves it to the first possible location returned by get_valid_moves(). If the ghost can move, the method returns true, otherwise, it returns false. For the test, I created a Ghost object, then called get_valid_moves(), and moved the ghost using move() to the first valid move if there were any valid moves. I tested that the move correctly moved the ghost to one of the valid moves. I did this a second time to test that another move would also return the correct result.
 #### **is_pacman_in_range()**
@@ -23,4 +27,6 @@ This method uses get_valid_moves() to find the possible locations that a Ghost c
 This method puts the object specified by the name at the location in the parameter. It returns true if it is able to move the object, and false otherwise. For the test, I got the valid moves for a Pacman, moved it to the first valid move through move, and tested that the move returned true.
 #### **getLoc(Location loc)**
 #### **attack(String name)**
+The method takes the name of a ghost and checks whether that ghost is adjacent to Pacman. If it is, then the attack method updates the gameOver variable and ends the game.
+The test sets a ghost and Pacman adjacent to each other. The method should return true and the gameOver variable is set to true as a result. In turn, this should end the game.
 #### **eatCookie(String Name)**
