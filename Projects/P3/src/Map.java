@@ -82,7 +82,17 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
+		// update gameOver
+		// checks if pacman is adjacent to the ghost		
+		Location loc_ghost = locations.get(Name);
+		Location loc_pacman = locations.get("pacman");
+		Location unshifted = loc_ghost.unshift(loc_pacman);
+
+		if (Math.pow(unshifted.x, 2) + Math.pow(unshifted.y, 2) == 1 && (unshifted.x == 0 || unshifted.y == 0)){
+			gameOver = true;
+			return true;
+		}
+
 		return false;
 	}
 	
