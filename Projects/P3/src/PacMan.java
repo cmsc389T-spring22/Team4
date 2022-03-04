@@ -27,6 +27,6 @@ public class PacMan{
 	}
 
 	public JComponent consume() { 
-		return Map.eatCookie("pacman");
+		return myMap.eatCookie("pacman");
 	}
 }
