@@ -20,6 +20,5 @@ public class TestMapMove {
 		if (locs.size() != 0) {
 			assertTrue(frame.move(pacman.name, locs.get(0), Map.Type.PACMAN));
 		}
-	
 	}
 }
