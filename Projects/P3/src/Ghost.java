@@ -20,7 +20,23 @@ public class Ghost{
 		return false;
 	}
 
-	public boolean is_pacman_in_range() { 
+	public boolean isPacManInRange() {
+		HashSet<Map.Type> up = myMap.getLoc(new Location(myLoc.x - 1, myLoc.y - 1));
+		if (up != null && up.contains(Map.Type.PACMAN)) {
+			return true;
+		}
+		HashSet<Map.Type> right = myMap.getLoc(new Location(myLoc.x, myLoc.y + 1));
+		if (right != null && right.contains(Map.Type.PACMAN)) {
+			return true;
+		}
+		HashSet<Map.Type> down = myMap.getLoc(new Location(myLoc.x + 1, myLoc.y));
+		if (down != null && down.contains(Map.Type.PACMAN)) {
+			return true;
+		}
+		HashSet<Map.Type> left = myMap.getLoc(new Location(myLoc.x, myLoc.y - 1));
+		if (left != null && left.contains(Map.Type.PACMAN)) {
+			return true;
+		}
 		return false;
 	}
 
