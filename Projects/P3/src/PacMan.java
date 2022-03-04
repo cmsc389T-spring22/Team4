@@ -15,18 +15,46 @@ public class PacMan{
 	}
 
 	public ArrayList<Location> get_valid_moves() {
-		return null;	
+        ArrayList<Location> valid_moves = new ArrayList<Location>();
+
+        if (!myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.WALL)){
+            valid_moves.add(myLoc.shift(-1, 0));
+        }
+
+        if (!myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.WALL)){
+            valid_moves.add(myLoc.shift(1, 0));
+        }
+
+        if (!myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.WALL)){
+            valid_moves.add(myLoc.shift(0, 1));
+        }
+
+        if (!myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.WALL)){
+            valid_moves.add(myLoc.shift(0, -1));
+        }
+
+        return valid_moves;
 	}
 
 	public boolean move() {
-		return false;
+		if (get_valid_moves().size() == 0) {
+			return false;
+		} else {
+			this.myLoc = get_valid_moves().get(0);
+			return true;
+		}
 	}
 
+	// Uses Map class's getLoc to see whether the object located at 
+	// Locations directly next to pacman's location is of type GHOST
 	public boolean is_ghost_in_range() { 
-		return false;
+		return myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST) ||
+		myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST) ||
+		myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST) || 
+		myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST);
 	}
 
 	public JComponent consume() { 
- 		return null;
+		return myMap.eatCookie("pacman");
 	}
 }
