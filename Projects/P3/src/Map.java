@@ -62,7 +62,15 @@ public class Map{
 	public boolean move(String name, Location loc, Type type) {
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
-		return false;
+
+		if (!locations.containsKey(name) || !field.containsKey(loc) || !components.containsKey(name)) {
+			return false;
+		} 
+		components.get(name).setLocation(loc.x, loc.y);
+		locations.replace(name, loc);
+		field.replace(loc, emptySet);
+		
+		return true;
 	}
 
 	/**
