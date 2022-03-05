@@ -37,10 +37,12 @@ public class PacMan {
 	}
 
 	public boolean move() {
-		if (get_valid_moves().size() == 0) {
+		ArrayList<Location> moves = get_valid_moves();
+		if (moves.size() == 0) {
 			return false;
 		} else {
-			this.myLoc = get_valid_moves().get(0);
+			int move = (int) (Math.random() * moves.size());
+			this.myLoc = get_valid_moves().get(move);
 			return true;
 		}
 	}

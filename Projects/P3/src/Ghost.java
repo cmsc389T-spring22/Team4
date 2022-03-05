@@ -13,7 +13,25 @@ public class Ghost {
 	}
 
 	public ArrayList<Location> get_valid_moves() {
-		return null;
+		ArrayList<Location> valid_moves = new ArrayList<Location>();
+		System.out.println(myMap.getLoc(myLoc.shift(-1, 0)));
+		if (!myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.WALL)) {
+			valid_moves.add(myLoc.shift(-1, 0));
+		}
+
+		if (!myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.WALL)) {
+			valid_moves.add(myLoc.shift(1, 0));
+		}
+
+		if (!myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.WALL)) {
+			valid_moves.add(myLoc.shift(0, 1));
+		}
+
+		if (!myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.WALL)) {
+			valid_moves.add(myLoc.shift(0, -1));
+		}
+
+		return valid_moves;
 	}
 
 	public boolean move() {
