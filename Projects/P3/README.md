@@ -1,8 +1,16 @@
 # Project 1: PacMan
 
+<img src="./Screenshot_1.png" alt="drawing" width="250"/>
+<!-- ![Home Screen for PacMan game](./Screenshot_1.png) -->
+
 ###### Members: Jacob Zohdi, Maria Mao, Neha Shijo, Soyoung Hong
 
 ## Running Code from the Command Line
+
+```shell
+$ javac -cp "src/" src/*.java
+$ java -cp "src/" StartMenu
+```
 
 ## PacMan Class
 
