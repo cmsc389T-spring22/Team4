@@ -2,6 +2,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
 
+
+/**
+ * NOTES:
+ * 	not sure what dim does but the
+ * 	actual height of the map is 24
+ * 	actual width of the map is 25
+ */
 public class Map{
 
 	public enum Type {
@@ -55,22 +62,54 @@ public class Map{
 	public boolean move(String name, Location loc, Type type) {
 		//update locations, components, and field
 		//use the setLocation method for the component to move it to the new location
-		return false;
+
+		if (!locations.containsKey(name) || !field.containsKey(loc) || !components.containsKey(name)) {
+			return false;
+		} 
+		components.get(name).setLocation(loc.x, loc.y);
+		locations.replace(name, loc);
+		field.replace(loc, emptySet);
+		
+		return true;
 	}
-	
+
+	/**
+	 * If a location is on the map is will be in field.
+	 * If a location is outside of the map is should return null;
+	 * This way we can differentiate between Empty valid Location
+	 * and outside of map.
+	 * @param loc
+	 * @return
+	 */
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		return null;
+		if (!field.containsKey(loc)) {
+			return null;
+		}
+		return this.field.get(loc);
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
+		// update gameOver
+		// checks if pacman is adjacent to the ghost		
+		Location loc_ghost = locations.get(Name);
+		Location loc_pacman = locations.get("pacman");
+		Location unshifted = loc_ghost.unshift(loc_pacman);
+
+		if (Math.pow(unshifted.x, 2) + Math.pow(unshifted.y, 2) == 1 && (unshifted.x == 0 || unshifted.y == 0)){
+			gameOver = true;
+			return true;
+		}
+
 		return false;
 	}
 	
 	public JComponent eatCookie(String name) {
 		//update locations, components, field, and cookies
 		//the id for a cookie at (10, 1) is tok_x10_y1
-		return null;
+		Location loc = locations.get(name);
+		cookies += 1;
+		field.get(loc).remove(Map.Type.COOKIE);
+		return components.get("tok_x"+loc.x+"_y"+loc.y);
 	}
 }

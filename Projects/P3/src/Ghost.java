@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.ArrayList;
 
-public class Ghost{
+public class Ghost {
 	String myName;
 	Location myLoc;
 	Map myMap;
@@ -46,7 +46,7 @@ public class Ghost{
 	}
 
 	public boolean attack() {
-		if (is_pacman_in_range()) {
+		if (isPacManInRange()) {
 			myMap.attack(myName);
 			return true;
 		} else {
