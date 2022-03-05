@@ -11,6 +11,7 @@ public class TestMapGetLoc extends TestCase {
 	/**
 	 * This function returns the same map as instantiated in MainFrame
 	 * which reads the Map.txt file to create walls and cookies
+	 * 
 	 * @return Map
 	 * @throws FileNotFoundException
 	 */
@@ -19,19 +20,18 @@ public class TestMapGetLoc extends TestCase {
 		File text = new File(fileName);
 		Scanner scnr = new Scanner(text);
 		int row = 0;
-		while(scnr.hasNextLine()){
+		while (scnr.hasNextLine()) {
 			String line = scnr.nextLine();
-			for(int col = 0; col < line.length(); col++) {
+			for (int col = 0; col < line.length(); col++) {
 				Location loc = new Location(row, col);
 
-				if(line.charAt(col) == '0') {
-					WallComponent wall = new WallComponent(loc.x,loc.y,scale);
+				if (line.charAt(col) == '0') {
+					WallComponent wall = new WallComponent(loc.x, loc.y, scale);
 					myMap.add("wall", loc, wall, Map.Type.WALL);
 					wall.setLocation(row, col);
-				}
-				else if (line.charAt(col) == '1') {
-					CookieComponent tok = new CookieComponent(loc.x,loc.y,scale);
-					myMap.add("tok_x"+row+"_y"+col, loc, tok, Map.Type.COOKIE);
+				} else if (line.charAt(col) == '1') {
+					CookieComponent tok = new CookieComponent(loc.x, loc.y, scale);
+					myMap.add("tok_x" + row + "_y" + col, loc, tok, Map.Type.COOKIE);
 					tok.setLocation(row, col);
 				}
 			}
@@ -43,15 +43,16 @@ public class TestMapGetLoc extends TestCase {
 
 	/**
 	 * Tests that get works on the initial map for all valid locations
+	 * 
 	 * @throws FileNotFoundException
 	 */
-	public void testMapGetLoc() throws FileNotFoundException  {
+	public void testMapGetLoc() throws FileNotFoundException {
 		Map myMap = createMapFromAssetTxt();
 		for (int row = 0; row < 24; row++) {
 			for (int col = 0; col < 25; col++) {
 				HashSet<Map.Type> locs = myMap.getLoc(new Location(row, col));
 				if (locs == null) {
-					assertTrue(row >=9 && row <= 14);
+					assertTrue(row >= 9 && row <= 14);
 					assertTrue(col >= 11 && col <= 13);
 				} else {
 					assertNotNull(locs);
@@ -64,6 +65,7 @@ public class TestMapGetLoc extends TestCase {
 
 	/**
 	 * Tests that multiple but only a set of objects can be added to valid location
+	 * 
 	 * @throws FileNotFoundException
 	 */
 	public void testGetLocAddObjects() throws FileNotFoundException {
@@ -73,11 +75,11 @@ public class TestMapGetLoc extends TestCase {
 		addGhost(myMap, new Location(3, 4), "ghost2", new Color(2, 2, 2));
 
 		HashSet<Map.Type> loc = myMap.getLoc(new Location(3, 4));
-		assertEquals(2,loc.size());
+		assertEquals(2, loc.size());
 
-		PacManComponent pc = new PacManComponent(3,4 ,scale);
+		PacManComponent pc = new PacManComponent(3, 4, scale);
 		myMap.add("pacman", new Location(3, 4), pc, Map.Type.PACMAN);
-		assertEquals(3,loc.size());
+		assertEquals(3, loc.size());
 	}
 
 	public void testGetLocOutOfBounds() throws FileNotFoundException {

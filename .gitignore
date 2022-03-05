@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 out
 .idea
 P3.iml
+=======
+out/
+.idea/
+*.iml
+>>>>>>> main

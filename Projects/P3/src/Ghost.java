@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.ArrayList;
 
-public class Ghost{
+public class Ghost {
 	String myName;
 	Location myLoc;
 	Map myMap;
@@ -17,14 +17,40 @@ public class Ghost{
 	}
 
 	public boolean move() {
-		return false;
+		if (get_valid_moves().size() == 0) {
+			return false;
+		} else {
+			this.myLoc = get_valid_moves().get(0);
+			return true;
+		}
 	}
 
-	public boolean is_pacman_in_range() { 
+	public boolean isPacManInRange() {
+		HashSet<Map.Type> up = myMap.getLoc(new Location(myLoc.x - 1, myLoc.y - 1));
+		if (up != null && up.contains(Map.Type.PACMAN)) {
+			return true;
+		}
+		HashSet<Map.Type> right = myMap.getLoc(new Location(myLoc.x, myLoc.y + 1));
+		if (right != null && right.contains(Map.Type.PACMAN)) {
+			return true;
+		}
+		HashSet<Map.Type> down = myMap.getLoc(new Location(myLoc.x + 1, myLoc.y));
+		if (down != null && down.contains(Map.Type.PACMAN)) {
+			return true;
+		}
+		HashSet<Map.Type> left = myMap.getLoc(new Location(myLoc.x, myLoc.y - 1));
+		if (left != null && left.contains(Map.Type.PACMAN)) {
+			return true;
+		}
 		return false;
 	}
 
 	public boolean attack() {
-		return false;
+		if (isPacManInRange()) {
+			myMap.attack(myName);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
