@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -109,12 +110,28 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		int i = 0;
 		for (Color color : colors) {
-			int x = (int) (Math.random() * 2 + dim / 2);
-			int y = (int) (Math.random() * 2 + dim / 2);
-			Location loc = new Location(x, y);
-			addGhost(loc, names[i++], color);
+			// int x = (int) (Math.random() * 2 + dim / 2);
+			// int y = (int) (Math.random() * 2 + dim / 2);
+			// Location loc = new Location(x, y);
+			Location randLocation = randomNewGhostLocation();
+			addGhost(randLocation, names[i++], color);
 		}
 
+	}
+
+	private Location randomNewGhostLocation() {
+		ArrayList<Location> locs = new ArrayList<>();
+		for (int x = 0; x <= 24; x++) {
+			for (int y = 0; y <= 25; y++) {
+				Location loc = new Location(x, y);
+				HashSet<Map.Type> items = myMap.getLoc(loc);
+				if (items != null && !items.contains(Map.Type.PACMAN) && !items.contains(Map.Type.WALL)) {
+					locs.add(loc);
+				}
+			}
+		}
+		int loc = (int) (Math.random() * locs.size());
+		return locs.get(loc);
 	}
 
 	public Map getMap() {

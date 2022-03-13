@@ -1,12 +1,13 @@
 import junit.framework.*;
 import java.awt.Color;
 import java.io.*;
+import java.util.ArrayList;
 
 public class TestPacManMove extends TestCase {
 
 	public void testPacManMove() throws FileNotFoundException {
 		// Creating A Map
-		Mainframe frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
+		MainFrame frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
 
 		// Creating Players
 		PacMan pacman = frame.addPacMan(new Location(5, 5)); // Creates PacMan at location x, y

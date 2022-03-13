@@ -42,7 +42,8 @@ public class PacMan {
 			return false;
 		} else {
 			int move = (int) (Math.random() * moves.size());
-			this.myLoc = get_valid_moves().get(move);
+			myLoc = get_valid_moves().get(move);
+			myMap.move("pacman", myLoc, Map.Type.PACMAN);
 			return true;
 		}
 	}

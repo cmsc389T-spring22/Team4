@@ -8,7 +8,7 @@ public class TestPacManInRange extends TestCase {
 
 	@Test
 	public void testPacManInRange() throws FileNotFoundException {
-		Mainframe frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
+		MainFrame frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
 
 		// Creating Players
 		Ghost ghost = frame.addGhost(new Location(5, 5), "Ghost", Color.white); // Creates PacMan at location x, y
@@ -21,7 +21,7 @@ public class TestPacManInRange extends TestCase {
 
 	@Test
 	public void testPacManNotInrange() throws FileNotFoundException {
-		Mainframe frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
+		MainFrame frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
 
 		// Creating Players
 		Ghost ghost = frame.addGhost(new Location(5, 5), "Ghost", Color.white); // Creates PacMan at location x, y

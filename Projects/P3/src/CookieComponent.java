@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class CookieComponent extends JComponent {
 
-	private Color color = new Color(218, 165, 32);;
+	private Color color = new Color(218, 165, 32);
 	private int scale;
 
 	public CookieComponent(int x, int y, int s) {
