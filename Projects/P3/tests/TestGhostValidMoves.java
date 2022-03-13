@@ -29,7 +29,6 @@ public class TestGhostValidMoves extends TestCase {
 		ArrayList<Location> expected = new ArrayList<Location>();
 		expected.add(new Location(2, 3));
 		expected.add(new Location(4, 3));
-		expected.add(new Location(3, 2));
 		expected.add(new Location(3, 4));
 		assertEquals(expected, ghost2.get_valid_moves());
 	}

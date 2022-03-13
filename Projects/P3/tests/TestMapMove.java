@@ -18,7 +18,7 @@ public class TestMapMove extends TestCase {
 		ArrayList<Location> locs = pacman.get_valid_moves();
 
 		if (locs.size() != 0) {
-			assertTrue(frame.move(pacman.name, locs.get(0), Map.Type.PACMAN));
+			assertTrue(frame.getMap().move("pacman", locs.get(0), Map.Type.PACMAN));
 		}
 	}
 }

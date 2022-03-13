@@ -3,9 +3,9 @@ import java.io.FileNotFoundException;
 
 import junit.framework.*;
 
-public class TestMapAttack {
+public class TestMapAttack extends TestCase {
 
-	public void testMapAttack() {
+	public void testMapAttack() throws FileNotFoundException {
 		MainFrame frame = new MainFrame(); // Creates A New Map With Walls and Tokens Initialized
 
 		// Creating Players
@@ -15,9 +15,6 @@ public class TestMapAttack {
 
 		// Start The Game
 		frame.startGame();
-
-		// alternatively if you don't need the PacMan or Ghost objects in your tests
-		frame.initPlayers(); // Creates all of the players
 
 		assertTrue(ghost.myMap.attack("gibby"));
 	}

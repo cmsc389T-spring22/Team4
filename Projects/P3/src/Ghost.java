@@ -45,7 +45,7 @@ public class Ghost {
 	}
 
 	public boolean isPacManInRange() {
-		HashSet<Map.Type> up = myMap.getLoc(new Location(myLoc.x - 1, myLoc.y - 1));
+		HashSet<Map.Type> up = myMap.getLoc(new Location(myLoc.x - 1, myLoc.y));
 		if (up != null && up.contains(Map.Type.PACMAN)) {
 			return true;
 		}
