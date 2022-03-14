@@ -38,3 +38,24 @@ jobs:
           mv src/*.java .
           echo "compiling java src files"
           javac -cp "junit-4.10.jar:." *.java
+
+      - name: Run TestPacManInRange
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManInRange
+
+      - name: Run TestMapGetLoc
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapGetLoc
+
+      - name: Run TestPacManValidMoves
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManValidMoves
