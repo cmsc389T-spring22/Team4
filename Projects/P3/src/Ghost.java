@@ -40,7 +40,7 @@ public class Ghost {
 			Location newLocation = moves.get(move);
 			myLoc = newLocation;
 			myMap.move(myName, newLocation, Map.Type.GHOST);
-			return true;
+			return false;
 		}
 	}
 
