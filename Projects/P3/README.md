@@ -12,6 +12,14 @@ $ javac -cp "src/" src/*.java
 $ java -cp "src/" StartMenu
 ```
 
+running tests
+
+```shell
+javac -d ./out -cp "src/" src/\*.java
+javac -d ./out -classpath "out/;tests/junit-4.10.jar;." tests/TestAttack.java
+java -cp "out;./tests/junit-4.10.jar;." org.junit.runner.JUnitCore TestAttack
+```
+
 ## PacMan Class
 
 #### **get_valid_moves()**
