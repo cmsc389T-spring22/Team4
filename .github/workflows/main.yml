@@ -43,19 +43,43 @@ jobs:
         run: |
           cd Projects
           cd P3
-          echo "runing test"
+          echo "running test"
           java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManInRange
 
       - name: Run TestMapGetLoc
         run: |
           cd Projects
           cd P3
-          echo "runing test"
+          echo "running test"
           java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapGetLoc
 
       - name: Run TestPacManValidMoves
         run: |
           cd Projects
           cd P3
-          echo "runing test"
+          echo "running test"
           java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManValidMoves
+          
+          
+      - name: Run TestMapMove
+        run: |
+          cd Projects
+          cd P3
+          echo "running test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapMove
+          
+          
+      - name: Run TestPacManMove
+        run: |
+          cd Projects
+          cd P3
+          echo "running test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManMove
+          
+          
+      - name: Run TestGhostMove
+        run: |
+          cd Projects
+          cd P3
+          echo "running test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostMove
