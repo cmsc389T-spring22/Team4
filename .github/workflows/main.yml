@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: [push, pull_request, workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Compile all java files with junit
+      - name: Compile and Build Project
+      - run: |
+          cd Projects 
+          cd P3
+          javac -d ./out -cp "src/" src/*java
+
+  testattack:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Run Addition Tests
+      - run: |
+          javac -d ./out -classpath "out/;tests/junit-4.10.jar;." tests/TestAttack.java
+          java -cp out;./tests/junit-4.10.jar org.junit.runner.JUnitCore TestAttack
