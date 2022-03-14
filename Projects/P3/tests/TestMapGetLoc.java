@@ -85,7 +85,8 @@ public class TestMapGetLoc extends TestCase {
 	public void testGetLocOutOfBounds() throws FileNotFoundException {
 		Map myMap = createMapFromAssetTxt();
 		HashSet<Map.Type> loc = myMap.getLoc(new Location(-1, -1));
-		assertNull(loc);
+		assertEquals(1, loc.size());
+		assertEquals(Map.Type.WALL, loc.toArray()[0]);
 	}
 
 	public void addGhost(Map myMap, Location loc, String name, Color color) {

@@ -21,16 +21,15 @@ jobs:
           cd Projects 
           cd P3
           javac -d ./out -cp "src/" src/*.java
-
-  testattack:
+  run_tests:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: openjdk
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Run TestAttack
-        # Run Addition Tests
+      # Compile all java files with junit
+      - name: Compile and Build Project
         run: |
           cd Projects 
           cd P3
@@ -38,5 +37,87 @@ jobs:
           mv src/*.java .
           echo "compiling java src files"
           javac -cp "junit-4.10.jar:." *.java
-          echo "runing test"
+
+      - name: Run Test Attack
+        run: |
+          cd Projects 
+          cd P3       
+          echo "runing test"           
           java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestAttack
+
+      - name: Run Test Consume
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestConsume
+
+      - name: Run Test GhostInRange
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostInRange
+
+      - name: Run TestGhostMove
+        run: |
+          cd Projects
+          cd P3          
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostMove
+
+      - name: Run TestGhostValidMoves
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostValidMoves
+
+      - name: Run TestMapAttack
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapAttack
+
+      - name: Run TestMapEatCookie
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapEatCookie
+
+      - name: Run TestMapGetLoc
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapGetLoc
+
+      - name: Run TestMapMove
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapMove
+
+      - name: Run TestPacManInRange
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManInRange
+
+      - name: Run TestPacManMove
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManMove
+
+      - name: Run TestPacManValidMoves
+        run: |
+          cd Projects
+          cd P3
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestPacManValidMoves
