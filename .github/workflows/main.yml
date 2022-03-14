@@ -20,7 +20,7 @@ jobs:
         run: |
           cd Projects 
           cd P3
-          javac -d ./out -cp "src/" src/*java
+          javac -d ./out -cp "src/" src/*.java
 
   testattack:
     # The type of runner that the job will run on
@@ -29,8 +29,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        # Run Addition Tests
       - name: Run TestAttack
+        # Run Addition Tests
         run: |
-          javac -d ./out -classpath "out/;tests/junit-4.10.jar;." tests/TestAttack.java
-          java -cp out;./tests/junit-4.10.jar org.junit.runner.JUnitCore TestAttack
+          cd Projects 
+          cd P3
+          mv tests/* .
+          mv src/*.java .
+          echo "compiling java src files"
+          javac -cp "junit-4.10.jar:." *.java
+          echo "runing test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestAttack
