@@ -69,7 +69,7 @@ public class Map {
 		locations.replace(name, loc);
 		field.get(prevLoc).remove(type);
 		field.get(loc).add(type);
-		return true;
+		return false;
 	}
 
 	/**
