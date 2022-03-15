@@ -34,7 +34,7 @@ public class Ghost {
 	public boolean move() {
 		ArrayList<Location> moves = get_valid_moves();
 		if (moves.size() == 0) {
-			return false;
+			return true;
 		} else {
 			int move = (int) (Math.random() * moves.size());
 			Location newLocation = moves.get(move);
