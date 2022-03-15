@@ -44,21 +44,23 @@ public class Ghost {
 		}
 	}
 
+
+
 	public boolean isPacManInRange() {
-		HashSet<Map.Type> up = myMap.getLoc(new Location(myLoc.x - 1, myLoc.y));
-		if (up != null && up.contains(Map.Type.PACMAN)) {
+		HashSet<Map.Type> up = myMap.getLoc(new Location(myLoc.x - 1, myLoc.y - 1));
+		if (up != null && up.contains(Ghost.Type.PACMAN)) {
 			return true;
 		}
 		HashSet<Map.Type> right = myMap.getLoc(new Location(myLoc.x, myLoc.y + 1));
-		if (right != null && right.contains(Map.Type.PACMAN)) {
+		if (right != null && right.contains(Type.PACMAN)) {
 			return true;
 		}
-		HashSet<Map.Type> down = myMap.getLoc(new Location(myLoc.x + 1, myLoc.y));
+		HashSet<Map.Type> down = myMap.getLoc(new Location(myLoc.x + 1, myLoc.y + 1));
 		if (down != null && down.contains(Map.Type.PACMAN)) {
 			return true;
 		}
 		HashSet<Map.Type> left = myMap.getLoc(new Location(myLoc.x, myLoc.y - 1));
-		if (left != null && left.contains(Map.Type.PACMAN)) {
+		if (left != null && left.contains(Type.PACMAN)) {
 			return true;
 		}
 		return false;
@@ -71,5 +73,9 @@ public class Ghost {
 		} else {
 			return false;
 		}
+	}
+
+	private enum Type {
+		PACMAN,
 	}
 }
