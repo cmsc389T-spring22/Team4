@@ -95,7 +95,7 @@ public class Map {
 		Location loc_ghost = locations.get(Name);
 		Location loc_pacman = locations.get("pacman");
 
-		if (Math.abs(loc_ghost.x - loc_pacman.x) + Math.abs(loc_ghost.y - loc_pacman.y) == 1) {
+		if (Math.abs(loc_ghost.x - loc_pacman.x) + Math.abs(loc_ghost.y - loc_pacman.y) == 2) {
 			gameOver = true;
 			return true;
 		}
