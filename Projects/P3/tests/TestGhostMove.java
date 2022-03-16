@@ -21,6 +21,5 @@ public class TestGhostMove extends TestCase {
 		} else {
 			assertFalse(ghost.move());
 		}
-
 	}
 }
