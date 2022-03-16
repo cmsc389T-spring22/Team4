@@ -16,14 +16,9 @@ public class TestPacManMove extends TestCase {
 		frame.startGame();
 		ArrayList<Location> moves = pacman.get_valid_moves();
 		if (moves.size() != 0) {
-			pacman.move();
-			assertTrue(moves.contains(pacman.myLoc));
-		}
-
-		moves = pacman.get_valid_moves();
-		if (moves.size() != 0) {
-			pacman.move();
-			assertTrue(moves.contains(pacman.myLoc));
+			assertTrue(pacman.move());
+		} else {
+			assertFalse(pacman.move());
 		}
 	}
 }

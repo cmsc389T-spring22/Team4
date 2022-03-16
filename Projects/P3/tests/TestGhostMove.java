@@ -17,15 +17,9 @@ public class TestGhostMove extends TestCase {
 		ArrayList<Location> moves = ghost.get_valid_moves();
 
 		if (moves.size() != 0) {
-			ghost.move();
-			assertTrue(moves.contains(ghost.myLoc));
+			assertTrue(ghost.move());
+		} else {
+			assertFalse(ghost.move());
 		}
-
-		moves = ghost.get_valid_moves();
-		if (moves.size() != 0) {
-			ghost.move();
-			assertTrue(moves.contains(ghost.myLoc));
-		}
-
 	}
 }
