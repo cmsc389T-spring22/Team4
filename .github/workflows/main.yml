@@ -39,6 +39,27 @@ jobs:
           echo "compiling java src files"
           javac -cp "junit-4.10.jar:." *.java
 
+      - name: Run TestPacManGhostInRange
+        run: |
+          cd Projects
+          cd P3
+          echo "running TestPacManGhostInRange test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostInRange
+
+      - name: Run TestGhostValidMoves
+        run: |
+          cd Projects
+          cd P3
+          echo "running TestGhostValidMoves test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostValidMoves
+
+      - name: Run TestMapAttack
+        run: |
+          cd Projects
+          cd P3
+          echo "running TestMapAttack test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapAttack
+
       - name: Run TestPacManInRange
         run: |
           cd Projects
@@ -83,3 +104,4 @@ jobs:
           cd P3
           echo "running TestGhostMove test"
           java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostMove
+
