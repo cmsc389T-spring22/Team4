@@ -105,3 +105,23 @@ jobs:
           echo "running TestGhostMove test"
           java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestGhostMove
 
+   - name: Run TestConsume
+        run: |
+          cd Projects
+          cd P3
+          echo "running TestConsume test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestConsume
+
+    - name: Run TestAttack
+        run: |
+          cd Projects
+          cd P3
+          echo "running TestAttack test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestAttack
+
+    - name: Run TestMapEatCookie
+        run: |
+          cd Projects
+          cd P3
+          echo "running TestMapEatCookie test"
+          java -cp "junit-4.10.jar:." org.junit.runner.JUnitCore TestMapEatCookie
