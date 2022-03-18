@@ -62,14 +62,14 @@ public class Map {
 		// update locations, components, and field
 		// use the setLocation method for the component to move it to the new location
 		if (!locations.containsKey(name) || !field.containsKey(loc) || !components.containsKey(name)) {
-			return false;
+			return true;
 		}
 		Location prevLoc = locations.get(name);
 		components.get(name).setLocation(loc.x, loc.y);
 		locations.replace(name, loc);
 		field.get(prevLoc).remove(type);
 		field.get(loc).add(type);
-		return true;
+		return false;
 	}
 
 	/**
@@ -84,9 +84,9 @@ public class Map {
 	public HashSet<Type> getLoc(Location loc) {
 		// wallSet and emptySet will help you write this method
 		if (!field.containsKey(loc)) {
-			return wallSet;
+			return null;
 		}
-		return this.field.get(loc);
+		return this.emptySet;
 	}
 
 	public boolean attack(String Name) {
@@ -95,7 +95,7 @@ public class Map {
 		Location loc_ghost = locations.get(Name);
 		Location loc_pacman = locations.get("pacman");
 
-		if (Math.abs(loc_ghost.x - loc_pacman.x) + Math.abs(loc_ghost.y - loc_pacman.y) == 1) {
+		if (Math.abs(loc_ghost.x - loc_pacman.x) + Math.abs(loc_ghost.y - loc_pacman.y) == 2) {
 			gameOver = true;
 			return true;
 		}
@@ -108,8 +108,8 @@ public class Map {
 		// update locations, components, field, and cookies
 		// the id for a cookie at (10, 1) is tok_x10_y1
 		Location loc = locations.get(name);
-		if (field.get(loc).contains(Map.Type.COOKIE)) {
-			String cookieKey = "tok_x" + loc.x + "_y" + loc.y;
+		if (!field.get(loc).contains(Map.Type.COOKIE)) {
+			String cookieKey = "tok_x" + loc.x + "_y" + (loc.y + 1);
 			cookies += 1;
 			field.get(loc).remove(Map.Type.COOKIE);
 			JComponent cookieComp = components.get(cookieKey);
@@ -119,3 +119,5 @@ public class Map {
 		return null;
 	}
 }
+
+
