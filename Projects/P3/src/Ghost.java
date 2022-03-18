@@ -69,10 +69,8 @@ public class Ghost {
 	public boolean attack() {
 		if (isPacManInRange()) {
 			myMap.attack(myName);
-			return false;
-		} else {
-			return true;
 		}
+		return false;
 	}
 
 	private enum Type {
