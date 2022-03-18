@@ -58,6 +58,6 @@ public class PacMan {
 	}
 
 	public JComponent consume() {
-		return myMap.eatCookie("pacman");
+		return !myMap.eatCookie("pacman");
 	}
 }

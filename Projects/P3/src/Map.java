@@ -114,7 +114,7 @@ public class Map {
 			field.get(loc).remove(Map.Type.COOKIE);
 			JComponent cookieComp = components.get(cookieKey);
 			components.remove(cookieKey);
-			return cookieComp;
+			return null;
 		}
 		return null;
 	}
