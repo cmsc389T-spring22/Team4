@@ -64,7 +64,7 @@ public class TestPacManInRange extends TestCase {
 
 		// Creating Players
 		Ghost ghost = frame.addGhost(new Location(5, 5), "Ghost", Color.white); // Creates PacMan at location x, y
-		frame.addPacMan(new Location(6, 6));
+		frame.addPacMan(new Location(6, 2));
 
 		// Start The Game
 		frame.startGame();
